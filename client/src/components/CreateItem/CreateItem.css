@@ -1,0 +1,18 @@
+.create-item {
+  width: 250px;
+  margin: 0 auto;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.create-item__button {
+  border: none;
+  background-color: black;
+  color: white;
+  width: 200px;
+  height: 40px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
