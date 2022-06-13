@@ -1,10 +1,23 @@
 .create-item {
-  width: 250px;
-  margin: 0 auto;
+  width: 800px;
+  margin: 20px auto;
   border: 2px solid black;
+  height: 200px;
+}
+
+.create-item__title {
+  text-align: center;
+}
+
+.create-item__body {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+}
+
+.create-item__name-field {
+  margin: 10px;
 }
 
 .create-item__button {
@@ -15,4 +28,5 @@
   height: 40px;
   margin: 20px auto;
   border-radius: 10px;
+  cursor: pointer;
 }

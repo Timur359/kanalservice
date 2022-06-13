@@ -14,35 +14,37 @@ const CreateItem = ({
   createTableItem,
 }) => {
   return (
-    <td>
-      <div className="create-item">
-        <p>Name: </p>
+    <div className="create-item">
+      <h2 className="create-item__title">Создание элемента таблицы</h2>
+      <div className="create-item__body">
+        <p className="create-item__name-field">Name: </p>
         <input
           type="text"
-          pattern="[A-Za-z]"
-          value={name}
+          pattern="[A-Za-zА-Яа-яЁё]"
           onChange={(e) => setName(e.target.value)}
           placeholder="Введите наименование..."
         />
-        <p>Amount:</p>
+        <p className="create-item__name-field">Amount:</p>
         <input
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Введите количество..."
+          maxLength="8"
         />
-        <p>Distance:</p>
+        <p className="create-item__name-field">Distance:</p>
         <input
           type="number"
           value={distance}
           onChange={(e) => setDistance(e.target.value)}
           placeholder="Введите расстояние..."
+          maxLength="8"
         />
         <button onClick={createTableItem} className="create-item__button">
           <p>Добавить</p>
         </button>
       </div>
-    </td>
+    </div>
   );
 };
 

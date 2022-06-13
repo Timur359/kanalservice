@@ -1,15 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-import AmountBody from '../Amount/AmountBody';
 import AmountHead from '../Amount/AmountHead';
 import CreateItem from '../CreateItem/CreateItem';
-import DateBody from '../Date/DateBody';
 import DateHeader from '../Date/DateHeader';
-import DistanceBody from '../Distance/DistanceBody';
 import DistanceHead from '../Distance/DistanceHead';
-import NameBody from '../Name/NameBody';
 import NameHead from '../Name/NameHead';
+import TableItem from '../TableItem/TableItem';
 
 import './TableList.css';
 
@@ -53,7 +50,7 @@ const TableList = () => {
     fetchTable();
   }, []);
 
-  console.log(table);
+  console.log(lists);
 
   //Создание элементов
 
@@ -115,22 +112,35 @@ const TableList = () => {
   }, [minAmount, maxAmount, minDistance, maxDistance, inputSearchName, table]);
 
   return (
-    <table className="table">
-      <caption>Тестовое задание</caption>
-      <thead>
-        <tr className="table">
-          <CreateItem
-            name={name}
-            amount={amount}
-            distance={distance}
-            setName={setName}
-            setAmount={setAmount}
-            setDistance={setDistance}
-            createTableItem={createTableItem}
-          />
-        </tr>
-        <tr>
+    <div className="table">
+      <h1 className="table__title">Тестовое задание</h1>
+      <CreateItem
+        name={name}
+        amount={amount}
+        distance={distance}
+        setName={setName}
+        setAmount={setAmount}
+        setDistance={setDistance}
+        createTableItem={createTableItem}
+      />
+      <div className="table__body">
+        <div className="table__columns">
           <DateHeader />
+          {lists.map((list, i) => (
+            <div key={i}>
+              <TableItem
+                name={list.date}
+                children={
+                  <button
+                    className="table__button"
+                    onClick={() => deleteTableItem(list.id)}
+                  />
+                }
+              />
+            </div>
+          ))}
+        </div>
+        <div className="table__columns">
           <NameHead
             nameValue={nameValue}
             inputSearchName={inputSearchName}
@@ -139,6 +149,13 @@ const TableList = () => {
             setNameValue={setNameValue}
             table={table}
           />
+          {lists.map((list, i) => (
+            <div key={i}>
+              <TableItem name={list.name} />
+            </div>
+          ))}
+        </div>
+        <div className="table__columns">
           <AmountHead
             amountValue={amountValue}
             minAmount={minAmount}
@@ -149,6 +166,13 @@ const TableList = () => {
             setList={setList}
             setAmountValue={setAmountValue}
           />
+          {lists.map((list, i) => (
+            <div key={i}>
+              <TableItem name={list.amount} />
+            </div>
+          ))}
+        </div>
+        <div className="table__columns">
           <DistanceHead
             distanceValue={distanceValue}
             minDistance={minDistance}
@@ -159,25 +183,14 @@ const TableList = () => {
             table={table}
             setList={setList}
           />
-        </tr>
-      </thead>
-      <tbody>
-        {lists.map((list, i) => (
-          <tr className="table__columns" key={i}>
-            <DateBody date={list.date} />
-            <NameBody name={list.name} />
-            <AmountBody amount={list.amount} />
-            <DistanceBody distance={list.distance} />
-            <td>
-              <button
-                className="table__button"
-                onClick={() => deleteTableItem(list.id)}
-              />
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          {lists.map((list, i) => (
+            <div key={i}>
+              <TableItem name={list.distance} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

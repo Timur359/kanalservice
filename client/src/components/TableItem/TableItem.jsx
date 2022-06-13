@@ -1,17 +1,15 @@
 import React from 'react';
-import Amount from '../Amount/Amount';
-import Date from '../Date/Date';
-import Distance from '../Distance/Distance';
-import Name from '../Name/Name';
 
-const TableItem = ({ list }) => {
+import '../TableList/TableList.css';
+
+const TableItem = ({ name, children }) => {
   return (
-    <div>
-      <Date date={list.date} />
-      <Name name={list.name} />
-      <Amount amount={list.amound} />
-      <Distance distance={list.distance} />
-    </div>
+    <>
+      <div className="table__columns_body">
+        {name}
+        {children}
+      </div>
+    </>
   );
 };
 

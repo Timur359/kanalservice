@@ -10,7 +10,7 @@ const NameHead = ({
   setNameValue,
   table,
 }) => {
-  //Фильтрация "больше" или "меньше" для имени
+  //Фильтрация "больше" или "меньше" для столбца имени
 
   const filterName = (value) => {
     setNameValue(value);
@@ -21,8 +21,8 @@ const NameHead = ({
     }
   };
   return (
-    <th className="table__columns_head">
-      Name{' '}
+    <div className="table__columns_head">
+      <p>Name</p>{' '}
       <select value={nameValue} onChange={(e) => filterName(e.target.value)}>
         <option disabled value="">
           Cортировать по:
@@ -30,14 +30,14 @@ const NameHead = ({
         <option value={'больше'}>По возрастанию</option>
         <option value={'меньше'}>По убыванию</option>
       </select>
-      Поиск
+      <p>Поиск</p>
       <input
         type="text"
         value={inputSearchName}
         onChange={(e) => setInputNameSearch(e.target.value)}
         placeholder="Найти..."
       />
-    </th>
+    </div>
   );
 };
 

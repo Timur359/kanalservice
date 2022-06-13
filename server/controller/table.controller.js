@@ -7,8 +7,6 @@ let Day = Data.getDate();
 
 let relevantDate = Day + '.' + Month + '.' + Year;
 
-console.log(relevantDate);
-
 class TableController {
   async getTable(req, res) {
     const table = await db.query('SELECT * FROM tableItem');
@@ -21,14 +19,6 @@ class TableController {
       [date, name, amount, distance]
     );
     res.json(newTableItem.rows[0]);
-  }
-  async updateTodo(req, res) {
-    const { id, perfomance } = req.body;
-    const todo = await db.query(
-      `UPDATE todoItem set perfomance = $1 where id = $2 RETURNING *`,
-      [perfomance, id]
-    );
-    res.json(todo.rows[0]);
   }
   async deleteTableItem(req, res) {
     const { id } = req.params;

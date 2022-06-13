@@ -12,7 +12,7 @@ const DistanceHead = ({
   table,
   setList,
 }) => {
-  //Фильтрация больше или меньше для расстояния
+  //Фильтрация больше или меньше для столбца расстояния
 
   const filterDistance = (value) => {
     setDistanceValue(value);
@@ -23,8 +23,8 @@ const DistanceHead = ({
     }
   };
   return (
-    <th className="table__columns_head">
-      Distance{' '}
+    <div className="table__columns_head">
+      <p>Distance</p>{' '}
       <select
         value={distanceValue}
         onChange={(e) => filterDistance(e.target.value)}
@@ -35,7 +35,7 @@ const DistanceHead = ({
         <option value={'больше'}>По возрастанию</option>
         <option value={'меньше'}>По убыванию</option>
       </select>
-      от:
+      <p>от:</p>
       <input
         type="number"
         value={minDistance}
@@ -43,7 +43,7 @@ const DistanceHead = ({
         placeholder="от..."
         minLength={8}
       />
-      до:
+      <p>до:</p>
       <input
         type="number"
         value={maxDistance}
@@ -51,7 +51,7 @@ const DistanceHead = ({
         placeholder="до..."
         minLength={8}
       />
-    </th>
+    </div>
   );
 };
 

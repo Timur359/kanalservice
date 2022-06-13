@@ -12,7 +12,7 @@ const AmountHead = ({
   setList,
   setAmountValue,
 }) => {
-  //Фильтрация больше или меньше для количества
+  //Фильтрация больше или меньше для столбца количества
 
   const filterAmount = (value) => {
     setAmountValue(value);
@@ -23,8 +23,8 @@ const AmountHead = ({
     }
   };
   return (
-    <th className="table__columns_head">
-      Amount{' '}
+    <div className="table__columns_head">
+      <p>Amount</p>{' '}
       <select
         value={amountValue}
         onChange={(e) => filterAmount(e.target.value)}
@@ -35,7 +35,7 @@ const AmountHead = ({
         <option value={'больше'}>По возрастанию</option>
         <option value={'меньше'}>По убыванию</option>
       </select>
-      от:
+      <p>от:</p>
       <input
         type="number"
         value={minAmount}
@@ -43,7 +43,7 @@ const AmountHead = ({
         placeholder="от..."
         minLength={8}
       />
-      до:
+      <p>до:</p>
       <input
         type="number"
         value={maxAmount}
@@ -51,7 +51,7 @@ const AmountHead = ({
         placeholder="до..."
         maxLength={8}
       />
-    </th>
+    </div>
   );
 };
 
